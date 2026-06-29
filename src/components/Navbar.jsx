@@ -81,6 +81,13 @@ function Navbar() {
  
 </Link>
 
+<Link
+  to="/dashboard"
+  className="hover:text-blue-500"
+>
+  Dashboard
+</Link>
+
         </div>
 
       </div>

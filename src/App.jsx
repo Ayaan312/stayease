@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import BookingForm from "./pages/BookingForm";
 import Offers from "./pages/Offers";
 import Contact from "./pages/Contact";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -34,9 +35,13 @@ function App() {
   element={<BookingForm />}
 />
 <Route path="/offers" element={<Offers />} />
+ <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
 
+      
     </BrowserRouter>
+    
+
   );
 }
 
