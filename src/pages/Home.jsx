@@ -6,8 +6,19 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import AIChat from "../components/AIChat";
 
 function Home() {
+
+  useEffect(() => {
+  AOS.init({
+    duration: 1000,
+    once: true,
+  });
+}, []);
 
   return (
     <div className="min-h-screen">
@@ -22,7 +33,10 @@ function Home() {
         <div className="absolute inset-0 bg-black/60"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto h-full flex flex-col justify-center px-6">
-          <div className="max-w-3xl text-white">
+          <div
+  className="max-w-3xl text-white"
+  data-aos="fade-right"
+>
             <span className="bg-blue-600 px-5 py-2 rounded-full text-sm font-semibold">
               Trusted By 1M+ Travelers
             </span>
@@ -54,7 +68,7 @@ function Home() {
           </div>
 
           {/* Search Bar Bar */}
-          <div className="mt-12 bg-white p-4 rounded-xl shadow-2xl grid grid-cols-1 md:grid-cols-4 gap-4 max-w-5xl">
+          <div className="mt-12 bg-white p-4 rounded-xl shadow-2xl grid grid-cols-1 md:grid-cols-4 gap-4 max-w-5xl"data-aos="fade-up">
             <div className="flex flex-col border-r border-gray-200 px-4">
               <label className="text-xs font-bold text-gray-500 uppercase">Location</label>
               <input type="text" placeholder="Where are you going?" className="outline-none py-1" />
@@ -75,7 +89,10 @@ function Home() {
       </section>
 
       {/* 2. IDEAS FOR YOUR NEXT TRIP */}
-      <section className="py-20 px-6 bg-white">
+     <section
+  className="py-20 px-6 bg-white"
+  data-aos="fade-up"
+>
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold mb-10">Ideas For Your Next Trip</h2>
 
@@ -114,8 +131,10 @@ function Home() {
       </section>
 
     {/* Trending Destinations */}
-
-<section className="py-16 px-6 bg-gray-50">
+<section
+  className="py-16 px-6 bg-gray-50"
+  data-aos="zoom-in"
+>
   <div className="max-w-7xl mx-auto">
 
     <div className="text-center mb-12">
@@ -216,7 +235,10 @@ function Home() {
 </section>
 {/* ================= Why Choose Us + Statistics ================= */}
 
-<section className="py-24 px-6 bg-gradient-to-b from-white via-blue-50 to-white">
+<section
+  className="py-24 px-6 bg-gradient-to-b from-white via-blue-50 to-white"
+  data-aos="fade-left"
+>
   <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
     {/* Left Side */}
@@ -337,7 +359,10 @@ function Home() {
 
 
       {/* 4. FOOTER / CTA */}
-      <footer className="bg-gray-900 text-white py-12 px-6">
+     <footer
+  className="bg-gray-900 text-white py-12 px-6"
+  data-aos="fade-up"
+>
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-2xl font-bold mb-4">StayEase</h3>
@@ -361,6 +386,7 @@ function Home() {
           © 2024 StayEase Inc. All rights reserved.
         </div>
       </footer>
+           <AIChat />
     </div>
   );
 }

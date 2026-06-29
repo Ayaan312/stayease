@@ -65,7 +65,7 @@ function MyBookings() {
 
             <div className="grid md:grid-cols-3 gap-6">
 
-              {bookings.map((hotel) => (
+              {bookings.map((hotel, index) => (
                 <div
                   key={hotel.id}
                   className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition"
