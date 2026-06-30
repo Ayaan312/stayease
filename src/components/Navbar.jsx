@@ -35,7 +35,7 @@ function Navbar() {
             to="/wishlist"
             className="hover:text-pink-500 transition"
           >
-            ❤️ Wishlist
+            ❤️Wishlist
           </Link>
 
           <Link
