@@ -39,45 +39,50 @@ function Dashboard() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-4xl font-bold mb-8">
-        Dashboard 📊
-      </h1>
 
-      {/* Statistics Cards */}
-      <div className="grid md:grid-cols-4 gap-6 mb-10">
+      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white shadow-lg mb-8">
+        <h1 className="text-4xl font-bold">
+          Dashboard 📊
+        </h1>
 
-        <div className="bg-white p-6 rounded-xl shadow">
-          <h2 className="text-gray-500">Total Bookings</h2>
-          <p className="text-3xl font-bold text-blue-600">
+        <p className="mt-3 text-blue-100">
+          Welcome back! Manage your bookings and revenue.
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-4 gap-6 mb-8">
+
+        <div className="bg-white p-6 rounded-2xl shadow-lg">
+          <h2 className="text-gray-500">Bookings</h2>
+          <p className="text-4xl font-bold text-blue-600">
             {bookings.length}
           </p>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow">
+        <div className="bg-white p-6 rounded-2xl shadow-lg">
           <h2 className="text-gray-500">Revenue</h2>
-          <p className="text-3xl font-bold text-green-600">
+          <p className="text-4xl font-bold text-green-600">
             ₹{revenue.toLocaleString()}
           </p>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow">
+        <div className="bg-white p-6 rounded-2xl shadow-lg">
           <h2 className="text-gray-500">Hotels</h2>
-          <p className="text-3xl font-bold text-purple-600">
+          <p className="text-4xl font-bold text-purple-600">
             20
           </p>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow">
+        <div className="bg-white p-6 rounded-2xl shadow-lg">
           <h2 className="text-gray-500">Wishlist</h2>
-          <p className="text-3xl font-bold text-red-600">
+          <p className="text-4xl font-bold text-red-600">
             {wishlist.length}
           </p>
         </div>
 
       </div>
 
-      {/* Chart */}
-      <div className="bg-white p-6 rounded-xl shadow">
+      <div className="bg-white rounded-2xl shadow-lg p-6">
         <h2 className="text-2xl font-bold mb-5">
           Monthly Bookings
         </h2>
@@ -87,13 +92,44 @@ function Dashboard() {
             <XAxis dataKey="month" />
             <YAxis />
             <Tooltip />
-            <Bar
-              dataKey="bookings"
-              fill="#2563eb"
-            />
+            <Bar dataKey="bookings" fill="#2563eb" />
           </BarChart>
         </ResponsiveContainer>
       </div>
+
+            {/* Bottom Section */}
+      <div className="grid md:grid-cols-2 gap-6 mt-8">
+
+        <div className="bg-white rounded-2xl shadow-lg p-6">
+          <h2 className="text-2xl font-bold mb-4">
+            Recent Activity
+          </h2>
+
+          <ul className="space-y-3 text-gray-600">
+            <li>✅ New Booking Received</li>
+            <li>❤️ Wishlist Updated</li>
+            <li>💳 Payment Successful</li>
+            <li>🏨 Hotel Added</li>
+            <li>⭐ New Review Received</li>
+          </ul>
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-lg p-6">
+          <h2 className="text-2xl font-bold mb-4">
+            Quick Stats
+          </h2>
+
+          <div className="space-y-3 text-gray-700">
+            <p>⭐ Average Rating : <span className="font-bold">4.8</span></p>
+            <p>👤 Active Users : <span className="font-bold">1,250</span></p>
+            <p>🏨 Available Hotels : <span className="font-bold">20</span></p>
+            <p>💰 Monthly Revenue : <span className="font-bold">₹2,50,000</span></p>
+            <p>📅 Today's Bookings : <span className="font-bold">12</span></p>
+          </div>
+        </div>
+
+      </div>
+
     </div>
   );
 }

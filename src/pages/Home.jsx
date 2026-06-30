@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -6,12 +6,14 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { useEffect } from "react";
+
 import AOS from "aos";
 import "aos/dist/aos.css";
 import AIChat from "../components/AIChat";
 
 function Home() {
+
+    const [selectedInfo, setSelectedInfo] = useState(null);
 
   useEffect(() => {
   AOS.init({
@@ -20,16 +22,17 @@ function Home() {
   });
 }, []);
 
-  return (
-    <div className="min-h-screen">
-      {/* 1. HERO SECTION */}
-      <section
-        className="relative h-screen bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1566073771259-6a8506099945')",
-        }}
-      >
+return (
+  <div className="min-h-screen bg-[#F8FAFC]">
+
+    {/* 1. HERO SECTION */}
+    <section
+      className="relative h-screen bg-cover bg-center"
+      style={{
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1566073771259-6a8506099945')",
+      }}
+    >
         <div className="absolute inset-0 bg-black/60"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto h-full flex flex-col justify-center px-6">
@@ -89,47 +92,106 @@ function Home() {
       </section>
 
       {/* 2. IDEAS FOR YOUR NEXT TRIP */}
-     <section
-  className="py-20 px-6 bg-white"
-  data-aos="fade-up"
->
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold mb-10">Ideas For Your Next Trip</h2>
+    <section className="py-20 px-6 bg-blue-600/5" data-aos="fade-up">
+  <div className="max-w-7xl mx-auto">
+    <h2 className="text-4xl font-bold mb-10">
+      Ideas For Your Next Trip
+    </h2>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {/* Big Card */}
-            <div className="md:col-span-2 bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
-              <img
-                src="https://media.istockphoto.com/id/2206381751/photo/waikiki-beach-sunset-sky-beautiful-pacific-ocean-water.jpg?s=612x612&w=0&k=20&c=VOHxTPJYqt9wy1NW7S2zhPbBUXHcq_-sIeyQ-Lbm9X4="
-                alt="Travel"
-                className="w-full h-80 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-2xl font-bold">Free Cancellation On Most Hotels</h3>
-                <p className="text-gray-600 mt-2">
-                  Flexible booking options for your next vacation.
-                </p>
-              </div>
-            </div>
+    <div className="grid md:grid-cols-3 gap-6">
 
-            {/* Side Cards */}
-            <div className="space-y-6">
-              <div className="bg-gray-50 p-6 rounded-2xl shadow-md border border-gray-100">
-                <h3 className="text-xl font-bold">Last Minute Deals Available</h3>
-                <p className="text-gray-600 mt-2">Find your perfect getaway today with special discounts.</p>
-                <button className="mt-4 text-blue-600 font-semibold underline">Learn More</button>
-              </div>
+      {/* Big Card */}
+      <div className="md:col-span-2 bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+        <img
+          src="https://media.istockphoto.com/id/2206381751/photo/waikiki-beach-sunset-sky-beautiful-pacific-ocean-water.jpg?s=612x612&w=0&k=20&c=VOHxTPJYqt9wy1NW7S2zhPbBUXHcq_-sIeyQ-Lbm9X4="
+          alt="Travel"
+          className="w-full h-80 object-cover"
+        />
 
-              <div className="bg-blue-50 p-6 rounded-2xl shadow-md border border-blue-100">
-                <h3 className="text-xl font-bold">Travel Inspiration</h3>
-                <p className="text-gray-600 mt-2">Discover amazing destinations worldwide and plan your journey.</p>
-                <button className="mt-4 text-blue-600 font-semibold underline">Read Blog</button>
-              </div>
-            </div>
-          </div>
+        <div className="p-6">
+          <h3 className="text-2xl font-bold">
+            Free Cancellation On Most Hotels
+          </h3>
+
+          <p className="text-gray-600 mt-2">
+            Flexible booking options for your next vacation.
+          </p>
         </div>
-      </section>
+      </div>
 
+      {/* Side Cards */}
+      <div className="space-y-6">
+
+        <div className="bg-gray-50 p-6 rounded-2xl shadow-md border border-gray-100">
+          <h3 className="text-xl font-bold">
+            Last Minute Deals Available
+          </h3>
+
+          <p className="text-gray-600 mt-2">
+            Find your perfect getaway today with special discounts.
+          </p>
+
+          <button
+            onClick={() =>
+              setSelectedInfo({
+                title: "Last Minute Deals Available",
+                description:
+                  "Enjoy up to 50% OFF on last-minute hotel bookings. Book premium hotels, luxury resorts, and budget stays at exclusive prices. These offers are available for a limited time and include free cancellation on selected properties.",
+              })
+            }
+            className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg"
+          >
+            Learn More
+          </button>
+        </div>
+
+        <div className="bg-blue-50 p-6 rounded-2xl shadow-md border border-blue-100">
+          <h3 className="text-xl font-bold">
+            Travel Inspiration
+          </h3>
+
+          <p className="text-gray-600 mt-2">
+            Discover amazing destinations worldwide and plan your journey.
+          </p>
+
+          <button
+            onClick={() =>
+              setSelectedInfo({
+                title: "Travel Inspiration",
+                description:
+                  "Explore beautiful beaches, mountain escapes, luxury cities, heritage destinations, and hidden gems across the world. Get travel tips, destination guides, and hotel recommendations to make your next trip unforgettable.",
+              })
+            }
+            className="mt-4 bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg"
+          >
+            Read Blog
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    {/* Information Card */}
+    {selectedInfo && (
+      <div className="mt-10 bg-white rounded-2xl shadow-xl border border-gray-200 p-8">
+        <h3 className="text-3xl font-bold text-blue-600">
+          {selectedInfo.title}
+        </h3>
+
+        <p className="text-gray-600 mt-5 leading-8 text-lg">
+          {selectedInfo.description}
+        </p>
+
+        <button
+          onClick={() => setSelectedInfo(null)}
+          className="mt-6 bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-lg"
+        >
+          Close
+        </button>
+      </div>
+    )}
+  </div>
+</section>
     {/* Trending Destinations */}
 <section
   className="py-16 px-6 bg-gray-50"
@@ -173,32 +235,32 @@ function Home() {
         {
           city: "Goa",
           image:
-            "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEdDZ8XzpkIQxjFvXDQogvPOnJpBFDHQ74wifiHIdPIA&s=10",
         },
         {
           city: "Manali",
           image:
-            "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrT5X0IOLaLkz0ynPU1ieWTaLtLUYH5AdmsFuO-61IHw&s=10",
         },
         {
           city: "Jaipur",
           image:
-            "https://images.unsplash.com/photo-1599661046289-e31897846e41",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHxUhW8IZTPncURQoaXjxq_bmgUJSRZalSZwPDyy1SyA&s=10",
         },
         {
           city: "Mumbai",
           image:
-            "https://images.unsplash.com/photo-1567157577867-05ccb1388e66",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpfjs4b2rOKux9Cq9KKXPylIOf65Nbqobnmq4P5jl9kQ&s=10",
         },
         {
           city: "Kerala",
           image:
-            "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY9SJYPEmEDb2TlrEEd6V1KUk2hiTR5LcT2KPCfWohiAgulAcyMT_o50s&s=10",
         },
         {
           city: "Kashmir",
           image:
-            "https://images.unsplash.com/photo-1627894483216-2138af692e32",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFqDb6f61iVN1DuWqXbOAC3vXTH0MYLZSxzvid87FwLUZfBH4InmnS3gs&s=10",
         },
       ].map((item, index) => (
         <SwiperSlide key={index}>
