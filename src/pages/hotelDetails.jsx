@@ -29,33 +29,117 @@ function HotelDetails() {
         {/* Details */}
         <div className="p-8">
 
-          <h1 className="text-4xl font-bold">{hotel.name}</h1>
+{/* Header */}
+<div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
 
-          <p className="text-gray-500 text-lg mt-2">
-            📍 {hotel.city}, India
-          </p>
+  <div>
 
-          <p className="mt-4 text-gray-700 leading-8">
-            {hotel.description}
-          </p>
+    <div className="text-yellow-500 text-xl mb-2">
+      ⭐⭐⭐⭐⭐
+    </div>
 
-          <div className="flex gap-10 mt-6 flex-wrap">
+    <h1 className="text-4xl font-bold">
+      {hotel.name}
+    </h1>
 
-            <div>
-              <p className="text-gray-500">Rating</p>
-              <h3 className="text-xl font-bold text-yellow-500">
-                ⭐ {hotel.rating}
-              </h3>
-            </div>
+    <p className="text-blue-600 mt-2 font-medium cursor-pointer">
+      📍 {hotel.city}, India • Great Location • Show Map
+    </p>
 
-            <div>
-              <p className="text-gray-500">Price</p>
-              <h3 className="text-xl font-bold text-blue-600">
-                ₹{hotel.price} / Night
-              </h3>
-            </div>
+  </div>
 
-          </div>
+  <div className="text-right">
+
+    <p className="text-3xl font-bold text-blue-600">
+      ₹{hotel.price}
+    </p>
+
+    <p className="text-gray-500 mb-4">
+      Per Night
+    </p>
+
+    <button
+      onClick={() => navigate("/payment")}
+      className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold"
+    >
+      Reserve
+    </button>
+
+  </div>
+
+</div>
+
+{/* Description */}
+<p className="mt-8 text-gray-700 leading-8">
+  {hotel.description}
+</p>
+
+{/* Rating Card */}
+<div className="mt-8 inline-flex items-center gap-4 border rounded-xl px-5 py-3">
+
+  <div>
+    <h3 className="font-semibold">
+      Guest Rating
+    </h3>
+
+    <p className="text-gray-500 text-sm">
+      Excellent Stay
+    </p>
+  </div>
+
+  <div className="bg-blue-600 text-white px-3 py-2 rounded-lg font-bold">
+    {hotel.rating}
+  </div>
+
+</div>
+
+{/* Property Highlights */}
+
+<div className="mt-12">
+
+  <h2 className="text-3xl font-bold mb-6">
+    Property Highlights
+  </h2>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+
+    <div className="border rounded-xl p-5 hover:shadow-lg duration-300 cursor-pointer">
+      <div className="text-3xl mb-3">☕</div>
+      <h3 className="font-semibold text-lg">Breakfast</h3>
+      <p className="text-gray-500 text-sm">
+        Continental, Buffet
+      </p>
+    </div>
+
+    <div className="border rounded-xl p-5 hover:shadow-lg duration-300 cursor-pointer">
+      <div className="text-3xl mb-3">🌄</div>
+      <h3 className="font-semibold text-lg">Mountain View</h3>
+      <p className="text-gray-500 text-sm">
+        Balcony with Scenic View
+      </p>
+    </div>
+
+    <div className="border rounded-xl p-5 hover:shadow-lg duration-300 cursor-pointer">
+      <div className="text-3xl mb-3">🚗</div>
+      <h3 className="font-semibold text-lg">Free Parking</h3>
+      <p className="text-gray-500 text-sm">
+        Private Parking Available
+      </p>
+    </div>
+
+    <div className="border rounded-xl p-5 hover:shadow-lg duration-300 cursor-pointer">
+      <div className="text-3xl mb-3">🐶</div>
+      <h3 className="font-semibold text-lg">Pet Friendly</h3>
+      <p className="text-gray-500 text-sm">
+        Pets are Welcome
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+            
 
           {/* Amenities */}
           <div className="mt-10">
@@ -78,6 +162,65 @@ function HotelDetails() {
             </div>
 
           </div>
+
+          {/* About Property + Map */}
+
+<div className="grid lg:grid-cols-3 gap-8 mt-12">
+
+  {/* Left Side */}
+  <div className="lg:col-span-2">
+
+    <h2 className="text-3xl font-bold mb-5">
+      About this Property
+    </h2>
+
+    <p className="text-gray-700 leading-8">
+      {hotel.description}
+    </p>
+
+    <button className="mt-5 border border-blue-600 text-blue-600 px-6 py-2 rounded-lg hover:bg-blue-600 hover:text-white duration-300">
+      Show More
+    </button>
+
+  </div>
+
+  <div className="bg-gray-200 h-72 flex items-center justify-center rounded-t-2xl">
+  <a
+    href={`https://www.google.com/maps/search/?api=1&query=${hotel.city},India`}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
+  >
+    📍 Open {hotel.city} on Google Maps
+  </a>
+</div>
+    <div className="p-5">
+
+      <h3 className="text-xl font-bold">
+        📍 {hotel.city}, India
+      </h3>
+
+      <p className="text-gray-500 mt-2">
+        Prime location near famous attractions.
+      </p>
+
+      <button
+        onClick={() =>
+          window.open(
+            `https://www.google.com/maps/search/?api=1&query=${hotel.city},India`,
+            "_blank"
+          )
+        }
+        className="w-full mt-5 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold"
+      >
+        View on Google Maps
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
 
           {/* Hotel Information */}
           <div className="mt-10">
@@ -112,9 +255,9 @@ function HotelDetails() {
             Book Now
           </button>
 
-        </div>
+              </div>
       </div>
-    </div>
+    
   );
 }
 
